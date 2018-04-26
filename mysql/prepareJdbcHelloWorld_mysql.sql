@@ -1,8 +1,8 @@
-create database jdbcHelloWorld;
+create database if not exists jdbcHelloWorld;
 create user if not exists jdbcHelloWorld;
 alter user jdbcHelloWorld identified by 'jdbcHelloWorld';
 grant all on jdbcHelloWorld.* to 'jdbcHelloWorld'@'%';
-CREATE TABLE jdbcHelloWorld.people (
+CREATE TABLE if not exists jdbcHelloWorld.people (
   ID int AUTO_INCREMENT,
   firstName varchar(255),
   lastName varchar(255),

@@ -1,12 +1,26 @@
 import java.sql.*;
 /*from  w  w  w.  j  a va2  s.  c  om*/
 public class JdbcHelloWorld {
-  static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-  static final String DB_URL = "jdbc:mysql://localhost/jdbcHelloWorld";
+  static String JDBC_DRIVER;
+  static String DB_URL;
   static final String USER = "jdbcHelloWorld";
   static final String PASS = "jdbcHelloWorld";
 
   public static void main(String[] args) {
+    String db = args.length > 0 ? args[0] : "mysql";
+    switch(db) {
+      case "postgres":
+        System.out.println("using postgres...");
+        JDBC_DRIVER = "org.postgresql.Driver";
+        DB_URL = "jdbc:postgresql:jdbcHelloWorld";
+       break;
+      case "mysql":
+        System.out.println("using mysql...");
+        JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        DB_URL = "jdbc:mysql://localhost/jdbcHelloWorld";
+       break;
+     }
+
     Connection conn = null;
     Statement stmt = null;
     try {
